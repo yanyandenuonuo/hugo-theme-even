@@ -6,13 +6,15 @@
   {{ $length := len $terms -}}
   {{ if eq $name "categories" -}}
     <div class="terms">
-      <div class="terms-title">
-        {{ if eq $length 0 -}}
-          {{ T "zeroCategoryCounter" }}
-        {{- else -}}
-          {{ T "categoryCounter" $length }}
-        {{- end }}
-      </div>
+      {{- if .Site.Params.showCategoryCount -}}
+        <div class="terms-title">
+          {{ if eq $length 0 -}}
+            {{ T "zeroCategoryCounter" }}
+          {{- else -}}
+            {{ T "categoryCounter" $length }}
+          {{- end }}
+        </div>
+      {{- end -}}
       <div class="terms-tags">
         {{ range $key, $value := $terms -}}
           <a class="terms-link" href="{{ $name | relLangURL }}/{{ $value.Term | urlize }}{{ if $.Site.Params.uglyURLs }}.html{{else}}/{{ end }}">
@@ -24,13 +26,15 @@
     </div>
   {{- else if eq $name "tags" -}}
     <div class="terms">
-      <div class="terms-title">
-        {{ if eq $length 0 -}}
-          {{ T "zeroTagCounter" }}
-        {{- else -}}
-          {{ T "tagCounter" $length }}
-        {{- end }}
-      </div>
+      {{- if .Site.Params.showTagCount -}}
+        <div class="terms-title">
+          {{ if eq $length 0 -}}
+            {{ T "zeroTagCounter" }}
+          {{- else -}}
+            {{ T "tagCounter" $length }}
+          {{- end }}
+        </div>
+      {{- end -}}
       <div class="terms-tags">
         {{- range $key, $value := $terms }}
           <a class="terms-link" href="{{ $name | relLangURL }}/{{ $value.Term | urlize }}{{ if $.Site.Params.uglyURLs }}.html{{else}}/{{ end }}">
