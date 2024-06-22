@@ -1,5 +1,5 @@
   {{/*
-      ## Music 163
+      ## Music QQ
   
       ### Params:
   
@@ -7,7 +7,7 @@
   
         required param
         you can extract from music url
-        url format "http://music.163.com/#/song?id=3950552"
+        url format "https://i.y.qq.com/v8/playsong.html?songid=109295041&songtype=0"
   
       - Fiddle `auto`
   
@@ -19,13 +19,13 @@
   
       - Simple
   
-        {{% music "3950552" %}}
-        {{% music "3950552" "1" %}}
+        {{% music-qq "109295041" %}}
+        {{% music-qq "109295041" "1" %}}
   
       - Named Params
   
-        {{% music id="3950552" %}}
-        {{% music id="3950552" auto="1" %}}
+        {{% music-qq id="109295041" %}}
+        {{% music-qq id="109295041" auto="1" %}}
   
   */}}
   
@@ -35,27 +35,27 @@
   {{- if .IsNamedParams -}}
   
     <iframe style="max-width: 100%"
-      class="music163"
+      class="music-qq"
       frameborder="no"
       border="0"
       marginwidth="0"
       marginheight="0"
       width="330"
       height="86"
-      src="//music.163.com/outchain/player?type=2&id={{ .Get "id" }}&auto={{ or (.Get "auto") $auto }}&height=66">
+      src="//i.y.qq.com/n2/m/outchain/player/index.html?songtype=0&songid={{ .Get "id" }}&auto={{ or (.Get "auto") $auto }}&height=66">
     </iframe>
   
   {{- else -}}
   
     <iframe style="max-width: 100%"
-      class="music163"
+      class="music-qq"
       frameborder="no"
       border="0"
       marginwidth="0"
       marginheight="0"
       width="330"
       height="86"
-      src="//music.163.com/outchain/player?type=2&id={{ .Get 0 }}&auto={{ if isset .Params 1 }}{{ .Get 1 }}{{ else }}{{ $auto }}{{ end }}&height=66">
+      src="//i.y.qq.com/n2/m/outchain/player/index.html?songtype=0&songid={{ .Get 0 }}&auto={{ if isset .Params 1 }}{{ .Get 1 }}{{ else }}{{ $auto }}{{ end }}&height=66">
     </iframe>
   
   {{- end -}}
